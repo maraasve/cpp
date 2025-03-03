@@ -3,23 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marieke <marieke@student.42.fr>            +#+  +:+       +#+        */
+/*   By: maraasve <maraasve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 18:21:56 by marieke           #+#    #+#             */
-/*   Updated: 2025/02/26 18:22:42 by marieke          ###   ########.fr       */
+/*   Updated: 2025/03/03 16:43:04 by maraasve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DIAMONDTRAP_HPP
 # define DIAMONDTRAP_HPP
 
-# include "ClapTrap.hpp"
+# include "FragTrap.hpp"
+# include "ScavTrap.hpp"
 
-class DiamondTrap: public ClapTrap
+class DiamondTrap: public FragTrap, public ScavTrap
 {
 	public:
 		DiamondTrap(std::string name);
-		DiamondTrap(const DiamondTrap &other);
+		//DiamondTrap(const DiamondTrap &other);
 		~DiamondTrap();
 
 		DiamondTrap	&operator=(const DiamondTrap &other);

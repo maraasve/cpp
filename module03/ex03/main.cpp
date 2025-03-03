@@ -3,18 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marieke <marieke@student.42.fr>            +#+  +:+       +#+        */
+/*   By: maraasve <maraasve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 13:14:14 by marieke           #+#    #+#             */
-/*   Updated: 2025/02/26 18:18:25 by marieke          ###   ########.fr       */
+/*   Updated: 2025/03/03 16:42:59 by maraasve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 
 int	main(void)
 {
-	FragTrap Betsy("Betsy");
-
-	Betsy.attack("Bob");
+	DiamondTrap Betsy("Bennie");
+	
 }
