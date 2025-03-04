@@ -3,18 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maraasve <maraasve@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marieke <marieke@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 18:14:01 by marieke           #+#    #+#             */
-/*   Updated: 2025/03/03 16:37:15 by maraasve         ###   ########.fr       */
+/*   Updated: 2025/03/04 13:43:18 by marieke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap(std::string name): ClapTrap(name)
+FragTrap::FragTrap(): ClapTrap()
 {
 	std::cout << "FragTrap Default constructor called" << std::endl;
+	_HitPoints = 100;
+	_EnergyPoints = 100;
+	_AttackDamage = 30;
+}
+
+FragTrap::FragTrap(std::string name): ClapTrap(name)
+{
+	std::cout << "FragTrap name constructor called" << std::endl;
 	_Name = name;
 	_HitPoints = 100;
 	_EnergyPoints = 100;

@@ -6,11 +6,21 @@
 /*   By: marieke <marieke@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 13:38:51 by marieke           #+#    #+#             */
-/*   Updated: 2025/02/26 18:11:17 by marieke          ###   ########.fr       */
+/*   Updated: 2025/03/04 13:43:22 by marieke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
+
+ScavTrap::ScavTrap(): ClapTrap()
+{
+	std::cout << "ScavTrap Default constructor called" << std::endl;
+	if (_HitPoints == 10)
+		_HitPoints = 100;
+	_EnergyPoints = 50;
+	if (_EnergyPoints == 0)
+		_AttackDamage = 20;
+}
 
 ScavTrap::ScavTrap(std::string name): ClapTrap(name)
 {

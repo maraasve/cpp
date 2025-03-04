@@ -6,15 +6,20 @@
 /*   By: marieke <marieke@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 12:31:13 by marieke           #+#    #+#             */
-/*   Updated: 2025/02/26 13:38:47 by marieke          ###   ########.fr       */
+/*   Updated: 2025/03/04 13:22:37 by marieke          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(std::string name): _Name(name), _HitPoints(10), _EnergyPoints(10), _AttackDamage(0)
+ClapTrap::ClapTrap(): _Name("Anonymous"), _HitPoints(10), _EnergyPoints(10), _AttackDamage(0)
 {
 	std::cout << "ClapTrap Default constructor called" << std::endl;
+}
+
+ClapTrap::ClapTrap(std::string name): _Name(name), _HitPoints(10), _EnergyPoints(10), _AttackDamage(0)
+{
+	std::cout << "ClapTrap " << _Name << " constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap& other): _Name(other._Name), _HitPoints(other._HitPoints), _EnergyPoints(other._EnergyPoints), _AttackDamage(other._AttackDamage)
