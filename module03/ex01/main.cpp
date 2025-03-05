@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marieke <marieke@student.42.fr>            +#+  +:+       +#+        */
+/*   By: maraasve <maraasve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 13:14:14 by marieke           #+#    #+#             */
-/*   Updated: 2025/02/26 18:11:37 by marieke          ###   ########.fr       */
+/*   Updated: 2025/03/05 17:09:05 by maraasve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,11 @@
 int	main(void)
 {
 	ScavTrap Steward("Steward");
-	ScavTrap Copy = Steward;
 
 	Steward.attack("Bob");
-
+	Steward.guardGate();
+	Steward.guardGate();
+	Steward.takeDamage(50);
+	Steward.takeDamage(40);
+	Steward.takeDamage(10);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marieke <marieke@student.42.fr>            +#+  +:+       +#+        */
+/*   By: maraasve <maraasve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 13:36:14 by marieke           #+#    #+#             */
-/*   Updated: 2025/03/04 12:13:48 by marieke          ###   ########.fr       */
+/*   Updated: 2025/03/05 17:17:23 by maraasve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,12 @@
 
 class ScavTrap: virtual public ClapTrap
 {
+	protected:
+		const static int	_defaultHP = 100;
+		const static int	_defaultEP = 50;
+		const static int	_defaultAD = 20;
+		bool	_gateKeeping;
+
 	public:
 		ScavTrap();
 		ScavTrap(std::string name);
@@ -24,6 +30,7 @@ class ScavTrap: virtual public ClapTrap
 		~ScavTrap();
 
 		ScavTrap	&operator=(const ScavTrap &other);
+		void		attack(const std::string &target);
 		void		guardGate();
 };
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marieke <marieke@student.42.fr>            +#+  +:+       +#+        */
+/*   By: maraasve <maraasve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 13:14:14 by marieke           #+#    #+#             */
-/*   Updated: 2025/03/04 13:38:48 by marieke          ###   ########.fr       */
+/*   Updated: 2025/03/05 17:17:52 by maraasve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 int	main(void)
 {
-	DiamondTrap Betsy("Bennie");
-	Betsy.attack("Hannie");
-	Betsy.whoAmI();
+	DiamondTrap Betsy;
+
+	Betsy.attack("Bobby");
+	Betsy.guardGate();
+	Betsy.guardGate();
 }

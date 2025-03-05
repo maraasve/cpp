@@ -9,10 +9,9 @@ def create_header_file(class_name):
 
 class {class_name} 
 {{
-	private:
-
 	public:
 		{class_name}();
+		{class_name}
 		~{class_name}();
 
 }};

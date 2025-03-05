@@ -3,34 +3,51 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marieke <marieke@student.42.fr>            +#+  +:+       +#+        */
+/*   By: maraasve <maraasve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 18:14:01 by marieke           #+#    #+#             */
-/*   Updated: 2025/02/26 18:17:48 by marieke          ###   ########.fr       */
+/*   Updated: 2025/03/05 17:04:30 by maraasve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap(std::string name): ClapTrap(name)
+FragTrap::FragTrap(): ClapTrap()
 {
 	std::cout << "FragTrap Default constructor called" << std::endl;
-	_Name = name;
 	_HitPoints = 100;
 	_EnergyPoints = 100;
 	_AttackDamage = 30;
 }
 
-FragTrap::FragTrap(const FragTrap &other): ClapTrap(other)
+FragTrap::FragTrap(std::string name): ClapTrap(name)
+{
+	_Name = name;
+	_HitPoints = 100;
+	_EnergyPoints = 100;
+	_AttackDamage = 30;
+	std::cout << "FragTrap " << _Name << " constructor called" << std::endl;
+}
+
+FragTrap::FragTrap(const FragTrap &other):
 {
 	std::cout << "FragTrap Copy constructor called" << std::endl;
+	_Name = other._Name;
+	_HitPoints = other._HitPoints;
+	_EnergyPoints = other._EnergyPoints;
+	_AttackDamage = other._AttackDamage;
 }
 
 FragTrap	&FragTrap::operator=(FragTrap const &other)
 {
 	std::cout << "FragTrap Copy assignment operator called" << std::endl;
 	if (this != &other)
-		ClapTrap::operator=(other);
+	{
+		_Name = other._Name;
+		_HitPoints = other._HitPoints;
+		_EnergyPoints = other._EnergyPoints;
+		_AttackDamage = other._AttackDamage;
+	}
 	return (*this);
 }
 
