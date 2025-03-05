@@ -11,7 +11,8 @@ class {class_name}
 {{
 	public:
 		{class_name}();
-		{class_name}
+		{class_name}(const {class_name} &other);
+		{class_name}& operator=(const {class_name} &other);
 		~{class_name}();
 
 }};
@@ -34,6 +35,14 @@ def create_cpp_file(class_name):
 }}
 
 {class_name}::~{class_name}()
+{{
+}}
+
+{class_name}::{class_name}(const {class_name} &other)
+{{
+}}
+
+{class_name}& {class_name}::operator=(const {class_name} &other)
 {{
 }}
 """
