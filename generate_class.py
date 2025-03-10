@@ -5,14 +5,14 @@ def create_header_file(class_name):
     filename = os.path.join(os.getcwd(), f"{class_name}.hpp")
 
     content = f"""#ifndef {header_guard}
-#define {header_guard}
+# define {header_guard}
 
 class {class_name} 
 {{
 	public:
 		{class_name}();
 		{class_name}(const {class_name} &other);
-		{class_name}& operator=(const {class_name} &other);
+		{class_name}&	operator=(const {class_name} &other);
 		~{class_name}();
 
 }};

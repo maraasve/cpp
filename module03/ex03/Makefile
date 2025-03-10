@@ -6,13 +6,13 @@
 #    By: maraasve <maraasve@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/26 13:14:10 by marieke           #+#    #+#              #
-#    Updated: 2025/03/05 13:15:40 by maraasve         ###   ########.fr        #
+#    Updated: 2025/03/10 12:37:23 by maraasve         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = DiamondTrap
 CC = c++
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g
 SRC = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp
 OBJ_DIR = obj
 OBJ = $(SRC:%.cpp=$(OBJ_DIR)/%.o)

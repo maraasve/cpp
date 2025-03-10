@@ -6,21 +6,22 @@
 /*   By: maraasve <maraasve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 18:22:00 by marieke           #+#    #+#             */
-/*   Updated: 2025/03/05 17:13:16 by maraasve         ###   ########.fr       */
+/*   Updated: 2025/03/10 12:41:15 by maraasve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap(): ClapTrap(), _Name("Anonymous")
+DiamondTrap::DiamondTrap(): ClapTrap("Anonymous_clap_name")
 {
+	_Name = "Anonymous";
 	std::cout << "Diamondtrap Default constructor called" << std::endl;
 	_HitPoints = FragTrap::_defaultHP;
 	_EnergyPoints = ScavTrap::_defaultEP;
 	_AttackDamage = FragTrap::_defaultAD;
 }
 
-DiamondTrap::DiamondTrap(std::string name): ClapTrap(name + "_clap_name")
+DiamondTrap::DiamondTrap(const std::string &name): ClapTrap(name + "_clap_name")
 {
 	std::cout << "DiamondTrap " << _Name << " constructor called" << std::endl;
 	_Name = name;

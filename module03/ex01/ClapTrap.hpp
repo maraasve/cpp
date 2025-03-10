@@ -6,7 +6,7 @@
 /*   By: maraasve <maraasve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 12:31:19 by marieke           #+#    #+#             */
-/*   Updated: 2025/03/05 13:50:00 by maraasve         ###   ########.fr       */
+/*   Updated: 2025/03/10 17:45:32 by maraasve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ class ClapTrap
 
 	public:
 		ClapTrap();
-		ClapTrap(std::string name);
+		ClapTrap(const std::string &name);
 		ClapTrap(const ClapTrap& other);
-		~ClapTrap();
+		virtual ~ClapTrap();
 
 		ClapTrap& operator=(const ClapTrap &other);
 
-		void	attack(const std::string &target);
+		virtual void	attack(const std::string &target);
 		void	takeDamage(unsigned int amount);
 		void	beRepaired(unsigned int amount);
 };

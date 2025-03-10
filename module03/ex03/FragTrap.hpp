@@ -6,7 +6,7 @@
 /*   By: maraasve <maraasve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 18:14:06 by marieke           #+#    #+#             */
-/*   Updated: 2025/03/05 16:31:47 by maraasve         ###   ########.fr       */
+/*   Updated: 2025/03/10 12:51:31 by maraasve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,12 @@ class FragTrap: virtual public ClapTrap
 
 	public:
 		FragTrap();
-		FragTrap(std::string name);
+		FragTrap(const std::string &name);
 		FragTrap(const FragTrap &other);
 		~FragTrap();
 
 		FragTrap	&operator=(const FragTrap &other);
+		
 		void		highFiveGuys();
 };
 

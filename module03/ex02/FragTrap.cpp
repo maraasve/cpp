@@ -6,7 +6,7 @@
 /*   By: maraasve <maraasve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 18:14:01 by marieke           #+#    #+#             */
-/*   Updated: 2025/03/05 17:04:30 by maraasve         ###   ########.fr       */
+/*   Updated: 2025/03/10 12:52:20 by maraasve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ FragTrap::FragTrap(): ClapTrap()
 	_AttackDamage = 30;
 }
 
-FragTrap::FragTrap(std::string name): ClapTrap(name)
+FragTrap::FragTrap(const std::string &name): ClapTrap(name)
 {
 	_Name = name;
 	_HitPoints = 100;
@@ -29,7 +29,7 @@ FragTrap::FragTrap(std::string name): ClapTrap(name)
 	std::cout << "FragTrap " << _Name << " constructor called" << std::endl;
 }
 
-FragTrap::FragTrap(const FragTrap &other):
+FragTrap::FragTrap(const FragTrap &other)
 {
 	std::cout << "FragTrap Copy constructor called" << std::endl;
 	_Name = other._Name;
