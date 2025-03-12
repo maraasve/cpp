@@ -6,7 +6,7 @@
 /*   By: maraasve <maraasve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 14:26:53 by maraasve          #+#    #+#             */
-/*   Updated: 2025/03/10 17:42:48 by maraasve         ###   ########.fr       */
+/*   Updated: 2025/03/12 17:23:14 by maraasve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 #include <WrongAnimal.hpp>
 #include <WrongDog.hpp>
 #include <WrongCat.hpp>
+
+#include <limits>
 
 int	main(void)
 {
@@ -35,7 +37,6 @@ int	main(void)
 		delete j;
 		delete i;
 	}
-	std::cout << std::endl;
 	{
 		WrongAnimal* meta = new WrongAnimal();
 		WrongAnimal* j = new WrongDog();
@@ -51,5 +52,4 @@ int	main(void)
 		delete j;
 		delete i;
 	}
-	return 0;
 }
