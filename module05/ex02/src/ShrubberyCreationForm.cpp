@@ -34,16 +34,15 @@ void ShrubberyCreationForm::formAction() const{
     if (!ofs) {
         throw std::runtime_error("Failed to create file...");
     }
-    ofs << "               ,@@@@@@@," << std::endl;
-    ofs << "       ,,,.   ,@@@@@@/@@,  .oo8888o." << std::endl;
-    ofs << "    ,&%%&%&&%,@@maraasve@@,8888\\88/8o" << std::endl;
-    ofs << "   ,%&\\%&&%&&%,@@@\\@@@/@@88\\88888/88'" << std::endl;
-    ofs << "   %&&%&%&/%&&%@@\\@@/ /@@88888\\88888'" << std::endl;
-    ofs << "   %&&%/ %&%%&&@@\\ V /@@' `88\\8 `/88'" << std::endl;
-    ofs << "   `&%\\ ` /%&'   |.|        \\ '|8'" << std::endl;
+    ofs << "               ,%%%%%%%," << std::endl;
+    ofs << "       ,,,.   ,%%%%%%/%%,  .#######." << std::endl;
+    ofs << "    ,&&&&%&&%,%%maraasve%%,####\\##/##" << std::endl;
+    ofs << "   ,%&\\%&&%&&%,%%%\\/%%%/%%##\\#####/##'" << std::endl;
+    ofs << "   %&&%&%&/%&&%%%\\%%/ /%%#####\\#####'" << std::endl;
+    ofs << "   %&&%/ %&&&&&%%\\ V /%%' `##\\# `/##'" << std::endl;
+    ofs << "   `&%\\ ` /%&'   |.|         |'|#'" << std::endl;
     ofs << "       |o|        | |         | |" << std::endl;
     ofs << "       |.|        | |         | |" << std::endl;
     ofs << "    \\\\/ ._\\//_/__/  ,\\_//__\\\\/.  \\_//__/_" << std::endl;
-
     ofs.close();
 }

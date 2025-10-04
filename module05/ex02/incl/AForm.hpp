@@ -13,7 +13,7 @@ class AForm
 		const size_t		_signGrade;
 		const size_t		_execGrade;
 
-	public:
+	protected:
 		AForm();
 		AForm(std::string const &name, size_t const signGrade, size_t const execGrade);
 		AForm(const AForm &src);
@@ -36,6 +36,7 @@ class AForm
 				const char *what() const noexcept override;
 		};
 
+	public:
 		//getters
 		size_t				getSignGrade()	const;
 		size_t				getExecGrade()	const;

@@ -1,7 +1,6 @@
 #ifndef SHRUBBERYCREATIONFORM_HPP
 # define SHRUBBERYCREATIONFORM_HPP
 
-# include <iostream>
 # include <fstream>
 # include <AForm.hpp>
 
