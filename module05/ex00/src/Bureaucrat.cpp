@@ -1,4 +1,4 @@
-#include "Bureaucrat.hpp"
+#include <Bureaucrat.hpp>
 
 // constructors
 Bureaucrat::Bureaucrat(): _name("Anonymous"), _grade(150) {
@@ -44,7 +44,7 @@ Bureaucrat& Bureaucrat::operator = (const Bureaucrat& src) {
 	if (this != &src) {
 		_grade = src.getGrade();
 	}
-	return (*this);
+	return *this;
 }
 
 

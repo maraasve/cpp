@@ -7,12 +7,13 @@ def create_header_file(class_name):
     content = f"""#ifndef {header_guard}
 # define {header_guard}
 
-class {class_name} 
-{{
+# include <iostream>
+
+class {class_name} {{
 	public:
 		{class_name}();
-		{class_name}(const {class_name} &other);
-		{class_name}&	operator=(const {class_name} &other);
+		{class_name}(const {class_name}& src);
+		{class_name}& operator=(const {class_name}& src);
 		~{class_name}();
 
 }};
@@ -28,22 +29,23 @@ class {class_name}
 def create_cpp_file(class_name):
     filename = os.path.join(os.getcwd(), f"{class_name}.cpp")  # Use current directory for filename
 
-    content = f"""#include "{class_name}.hpp"
+    content = f"""#include <{class_name}.hpp>
 
-{class_name}::{class_name}()
-{{
+{class_name}::{class_name}() {{
+    std::cout << "{class_name} default constructor called" << std::endl;
 }}
 
-{class_name}::~{class_name}()
-{{
+{class_name}::~{class_name}() {{
+   std::cout << "{class_name} destructor called" << std::endl;
 }}
 
-{class_name}::{class_name}(const {class_name} &other)
-{{
+{class_name}::{class_name}(const {class_name}& src) {{
+    std::cout << "Copy constructor called" << std::endl;
+	*this = src;
 }}
 
-{class_name}& {class_name}::operator=(const {class_name} &other)
-{{
+{class_name}& {class_name}::operator=(const {class_name}& src) {{
+    std::cout << "Copy assignemt operator called" << std::endl;
 }}
 """
 

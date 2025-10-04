@@ -1,7 +1,7 @@
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 
-#include <iostream>
+# include <iostream>
 
 class Bureaucrat {
 	private:
@@ -14,10 +14,9 @@ class Bureaucrat {
 		Bureaucrat(size_t grade);
 		Bureaucrat(const std::string& name, size_t grade);
 		Bureaucrat(const Bureaucrat& src);
+		Bureaucrat& operator = (const Bureaucrat &src);
 		~Bureaucrat();
 		
-		//assignment operator
-		Bureaucrat& operator = (const Bureaucrat &src);
 
 		//exceptions
 		class GradeTooHighException : public std::exception {

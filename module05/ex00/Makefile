@@ -6,13 +6,13 @@
 #    By: marieke <marieke@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/10 14:25:08 by maraasve          #+#    #+#              #
-#    Updated: 2025/06/18 14:44:55 by marieke          ###   ########.fr        #
+#    Updated: 2025/09/27 18:01:44 by marieke          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = Bureaucrat
 CC = c++
-CFLAGS = -Wall -Werror -Wextra -g -fno-limit-debug-info
+CFLAGS = -Wall -Werror -Wextra -g -fno-limit-debug-info -I$(INCL_DIR)
 SRC_DIR = src
 SRC_FILES = main.cpp Bureaucrat.cpp
 SRC = $(patsubst %, $(SRC_DIR)/%, $(SRC_FILES))
