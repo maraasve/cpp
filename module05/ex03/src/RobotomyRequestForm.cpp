@@ -38,6 +38,6 @@ void RobotomyRequestForm::formAction() const {
         std::cout << _target << " has been robotomized" << std::endl;
     }
     else {
-        throw std::runtime_error("This robotomy has failed...");
+        std::cout << "This robotomy has failed..." << std::endl;
     }
 }

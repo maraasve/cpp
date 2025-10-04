@@ -20,6 +20,7 @@ class AForm
 		AForm& operator=(const AForm &src);
 		virtual ~AForm();
 
+	public:
 		//exceptions
 		class GradeTooHighException : public std::exception {
 			public:
@@ -36,7 +37,6 @@ class AForm
 				const char *what() const noexcept override;
 		};
 
-	public:
 		//getters
 		size_t				getSignGrade()	const;
 		size_t				getExecGrade()	const;

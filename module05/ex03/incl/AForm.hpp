@@ -18,31 +18,31 @@ class AForm
 		AForm(std::string const &name, size_t const signGrade, size_t const execGrade);
 		AForm(const AForm &src);
 		AForm& operator=(const AForm &src);
-		virtual ~AForm();
-
+		
+		public:
 		//exceptions
 		class GradeTooHighException : public std::exception {
 			public:
-				const char *what() const noexcept override;
+			const char *what() const noexcept override;
 		};
-
+		
 		class GradeTooLowException : public std::exception {
 			public:
-				const char *what() const noexcept override;
+			const char *what() const noexcept override;
 		};
 
 		class UnsignedFormException : public std::exception {
 			public:
 				const char *what() const noexcept override;
-		};
-
-	public:
-		//getters
-		size_t				getSignGrade()	const;
-		size_t				getExecGrade()	const;
-		const std::string&	getName()		const;
-		bool				getIsSigned()	const;
-
+			};
+			
+			//getters
+			size_t				getSignGrade()	const;
+			size_t				getExecGrade()	const;
+			const std::string&	getName()		const;
+			bool				getIsSigned()	const;
+			
+		virtual ~AForm();
 		//methods
 		void				beSigned(const Bureaucrat& b);
 		virtual void		execute(const Bureaucrat& executor) const;

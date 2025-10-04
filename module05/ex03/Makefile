@@ -6,18 +6,18 @@
 #    By: marieke <marieke@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/10 14:25:08 by maraasve          #+#    #+#              #
-#    Updated: 2025/10/04 12:19:38 by marieke          ###   ########.fr        #
+#    Updated: 2025/10/04 13:02:53 by marieke          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Forms
+NAME = Intern
 CC = c++
 OBJ_DIR = obj
 INCL_DIR = incl
-INCL_FILES = Bureaucrat.hpp AForm.hpp ShrubberyCreationForm.hpp RobotomyRequestForm.hpp PresidentialPardonForm.hpp colors.hpp
+INCL_FILES = Bureaucrat.hpp AForm.hpp ShrubberyCreationForm.hpp RobotomyRequestForm.hpp PresidentialPardonForm.hpp colors.hpp Intern.hpp
 INCL = $(patsubst %, $(INCL_DIR)/%, $(INCL_FILES))
 SRC_DIR = src
-SRC_FILES = main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
+SRC_FILES = main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp Intern.cpp
 CFLAGS = -Wall -Werror -Wextra -g -fno-limit-debug-info
 SRC = $(patsubst %, $(SRC_DIR)/%, $(SRC_FILES))
 OBJ = $(SRC_FILES:%.cpp=$(OBJ_DIR)/%.o)
