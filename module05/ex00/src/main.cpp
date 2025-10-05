@@ -1,23 +1,32 @@
-#include "Bureaucrat.hpp"
+#include <Bureaucrat.hpp>
+#include <colors.hpp>
 
 int main(void)
 {
-	/* Throw exception when calling constructor with grade too high */
+	/* ------------------ TEST 1 ------------------ */
+
+	std::cout << GREEN << "---------- TEST 1 ----------- \n" << RESET << std::endl;
+	std::cout << "Should throw an exception -> grade is too high" << std::endl;
 	{
 		try
 		{
-			Bureaucrat mike("Mike", 0);
-			std::cout << mike << std::endl;
+			Bureaucrat bob("Bob", 0);
+			std::cout << bob << std::endl;
 		}
 		catch (std::exception &e)
 		{
 			std::cout << e.what() << std::endl;
 		}
 	}
+	std::cout << "\n -------------------------- \n\n";
+	std::cout << "\nPress Enter to continue...";
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	
 
-	std::cout << "\n --------------------- \n\n";
+	/* ------------------ TEST 2 ------------------ */
 
-	/* Throw exception when calling constructor with grade too low */
+	std::cout << GREEN << "\n\n---------- TEST 2 ----------- \n\n" << RESET << std::endl;
+	std::cout << "Should throw an exception -> grade is too low\n" << std::endl;
 	{
 		try
 		{
@@ -30,20 +39,26 @@ int main(void)
 		}
 	}
 
-	std::cout << "\n --------------------- \n\n";
+	std::cout << "\n -------------------------- \n\n";
+	std::cout << "\nPress Enter to continue...";
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	
-	/* Throw exeception when calling incrementGrade() */
+
+	/* ------------------ TEST 3 ------------------ */
+
+	std::cout << GREEN << "\n\n---------- TEST 3 ----------- \n\n" << RESET << std::endl;
+	std::cout << "Should throw an exception after incrementGrade -> grade is too high\n" << std::endl;
 	{	
 		try 
 		{
-			Bureaucrat dur("Dur", 3);
-			std::cout << dur << std::endl;
-			dur.incrementGrade(); //grade 2
-			std::cout << dur << std::endl;
-			dur.incrementGrade(); //grade 1
-			std::cout << dur << std::endl;
-			dur.incrementGrade(); //grade 0 -> exception
-			std::cout << dur << std::endl;
+			Bureaucrat hank("Hank", 3);
+			std::cout << hank << std::endl;
+			hank.incrementGrade(); //grade 2
+			std::cout << hank << std::endl;
+			hank.incrementGrade(); //grade 1
+			std::cout << hank << std::endl;
+			hank.incrementGrade(); //grade 0 -> exception
+			std::cout << hank << std::endl;
 		}
 		catch (std::exception &e)
 		{
@@ -51,20 +66,26 @@ int main(void)
 		}
 	}
 
-	std::cout << "\n --------------------- \n\n";
+	std::cout << "\n -------------------------- \n\n";
+	std::cout << "\nPress Enter to continue...";
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-	/* Throw exeception when calling derementGrade */
+
+	/* ------------------ TEST 4 ------------------ */
+
+	std::cout << GREEN << "\n\n---------- TEST 4 ----------- \n\n" << RESET << std::endl;
+	std::cout << "Should throw an exception after decrementGrade -> grade is too low\n" << std::endl;
 	{	
 		try
 		{
-			Bureaucrat alan("Alan", 149);
-			std::cout << alan << std::endl;
-			alan.decrementGrade(); // 150
-			std::cout << alan << std::endl;
-			alan.decrementGrade(); // 151 -> exception
-			std::cout << alan << std::endl;
-			alan.decrementGrade();
-			std::cout << alan << std::endl;
+			Bureaucrat bella("Bella", 149);
+			std::cout << bella << std::endl;
+			bella.decrementGrade(); // 150
+			std::cout << bella << std::endl;
+			bella.decrementGrade(); // 151 -> exception
+			std::cout << bella << std::endl;
+			bella.decrementGrade();
+			std::cout << bella << std::endl;
 		}
 		catch (std::exception &e)
 		{
