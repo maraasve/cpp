@@ -4,15 +4,13 @@
 # include <iostream>
 
 class ScalarConverter {
-	private:
-		ScalarConverter();
-		ScalarConverter(const ScalarConverter& src);
-		ScalarConverter& operator=(const ScalarConverter& src);
-
 	public:
-		~ScalarConverter();
+		ScalarConverter() = delete;
+		ScalarConverter(const ScalarConverter& src) = delete;
+		ScalarConverter& operator=(const ScalarConverter& src) = delete;
+		~ScalarConverter() = delete;
+		
 		static void convert(const std::string& literal);
-
 };
 
 #endif
