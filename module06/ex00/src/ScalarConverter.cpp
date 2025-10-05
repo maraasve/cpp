@@ -1,25 +1,6 @@
 #include <ScalarConverter.hpp>
 #include <getType.hpp>
 
-ScalarConverter::ScalarConverter() {
-    std::cout << "ScalarConverter default constructor called" << std::endl;
-}
-
-ScalarConverter::~ScalarConverter() {
-   std::cout << "ScalarConverter destructor called" << std::endl;
-}
-
-ScalarConverter::ScalarConverter(const ScalarConverter& src) {
-    std::cout << "Copy constructor called" << std::endl;
-	*this = src;
-}
-
-ScalarConverter& ScalarConverter::operator=(const ScalarConverter& src) {
-    std::cout << "Copy assignment operator called" << std::endl;
-    (void)src;
-    return *this;
-}
-
 static void handleInvalidLiteral() {
     std::cout << "char: impossible" << std::endl;
     std::cout << "int: impossible" << std::endl;
