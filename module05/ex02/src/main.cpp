@@ -5,13 +5,11 @@
 
 int main() {
 
-    std::cout << "Tests with (*) at the begining should print an exception"
-              << std::endl
-              << std::endl;
+    /* ------------------ TEST 1 ------------------ */
 
-    /* ------------------------------------ */
+	std::cout << GREEN << "---------- TEST 1 ----------- \n" << RESET << std::endl;
+    std::cout << "Shrubbery Form, signable and executable" << std::endl;
 
-    std::cout << "TEST 1) Shrubbery Form, signable and executable" << std::endl;
     try {
         Bureaucrat bur("John", 10);
         ShrubberyCreationForm form("Home");
@@ -20,12 +18,16 @@ int main() {
     } catch (std::exception &e) {
         std::cout << RED << "Exception: " << e.what() << RESET << std::endl;
     }
-    std::cout << std::endl;
+    std::cout << "\n -------------------------- \n\n";
+	std::cout << "\nPress Enter to continue...";
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-    /* ------------------------------------ */
 
-    std::cout << "* TEST 2) Shrubbery Form, signable but not executable"
-              << std::endl;
+    /* ------------------ TEST 2 ------------------ */
+
+	std::cout << GREEN << "---------- TEST 2 ----------- \n" << RESET << std::endl;
+    std::cout << "Should throw an exception -> Shrubbery Form, signable but not executable" << std::endl;
+
     try {
         Bureaucrat bur("John", 140);
         ShrubberyCreationForm form("Home");
@@ -34,11 +36,15 @@ int main() {
     } catch (std::exception &e) {
         std::cout << RED << "Exception: " << e.what() << RESET << std::endl;
     }
-    std::cout << std::endl;
+    std::cout << "\n -------------------------- \n\n";
+	std::cout << "\nPress Enter to continue...";
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-    /* ------------------------------------ */
 
-    std::cout << "TEST 3) Robotomy Form, signable and executable" << std::endl;
+    /* ------------------ TEST 3 ------------------ */
+
+	std::cout << GREEN << "---------- TEST 3 ----------- \n" << RESET << std::endl;
+    std::cout << "Robotomy Form, signable and executable" << std::endl;
     try {
         Bureaucrat bur("John", 40);
         RobotomyRequestForm form("Chicken");
@@ -47,12 +53,16 @@ int main() {
     } catch (std::exception &e) {
         std::cout << RED << "Exception: " << e.what() << RESET << std::endl;
     }
-    std::cout << std::endl;
+    std::cout << "\n -------------------------- \n\n";
+	std::cout << "\nPress Enter to continue...";
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-    /* ------------------------------------ */
 
-    std::cout << "* TEST 4) Robotomy Form, signable but not executable"
-              << std::endl;
+    /* ------------------ TEST 4 ------------------ */
+
+	std::cout << GREEN << "---------- TEST 4 ----------- \n" << RESET << std::endl;
+    std::cout << "Should throw an exception -> Robotomy Form, signable but not executable" << std::endl;
+
     try {
         Bureaucrat bur("John", 50);
         RobotomyRequestForm form("Chicken");
@@ -61,12 +71,16 @@ int main() {
     } catch (std::exception &e) {
         std::cout << RED << "Exception: " << e.what() << RESET << std::endl;
     }
-    std::cout << std::endl;
+    std::cout << "\n -------------------------- \n\n";
+	std::cout << "\nPress Enter to continue...";
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-    /* ------------------------------------ */
 
-    std::cout << "TEST 5) Presidential Pardon Form, signable and executable"
-              << std::endl;
+    /* ------------------ TEST 5 ------------------ */
+
+	std::cout << GREEN << "---------- TEST 5 ----------- \n" << RESET << std::endl;
+    std::cout << "Presidential Pardon Form, signable and executable" << std::endl;
+
     try {
         Bureaucrat bur("John", 4);
         PresidentialPardonForm form("Marvin");
@@ -75,13 +89,16 @@ int main() {
     } catch (std::exception &e) {
         std::cout << RED << "Exception: " << e.what() << RESET << std::endl;
     }
-    std::cout << std::endl;
+    std::cout << "\n -------------------------- \n\n";
+	std::cout << "\nPress Enter to continue...";
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-    /* ------------------------------------ */
 
-    std::cout
-        << "* TEST 6) Presidential Pardon Form, signable but not executable"
-        << std::endl;
+    /* ------------------ TEST 6 ------------------ */
+
+	std::cout << GREEN << "---------- TEST 6 ----------- \n" << RESET << std::endl;
+    std::cout << "Should throw an exception - > Presidential Pardon Form, signable but not executable" << std::endl;
+   
     try {
         Bureaucrat bur("John", 20);
         PresidentialPardonForm form("Marvin");
@@ -90,15 +107,16 @@ int main() {
     } catch (std::exception &e) {
         std::cout << RED << "Exception: " << e.what() << RESET << std::endl;
     }
-    std::cout << std::endl;
+    std::cout << "\n -------------------------- \n\n";
+	std::cout << "\nPress Enter to continue...";
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-    /* ------------------------------------ */
 
-    std::cout << "------------------------------------------" << std::endl;
+    /* ------------------ TEST 7 ------------------ */
 
-    /* ------------------------------------ */
+	std::cout << GREEN << "---------- TEST 7 ----------- \n" << RESET << std::endl;
+    std::cout << "Shrubbery Form, signable and executable" << std::endl;
 
-    std::cout << "TEST 7) Shrubbery Form, signable and executable" << std::endl;
     try {
         Bureaucrat bur("John", 10);
         ShrubberyCreationForm form("Home");
@@ -107,12 +125,16 @@ int main() {
     } catch (std::exception &e) {
         std::cout << RED << "Exception: " << e.what() << RESET << std::endl;
     }
-    std::cout << std::endl;
+    std::cout << "\n -------------------------- \n\n";
+	std::cout << "\nPress Enter to continue...";
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-    /* ------------------------------------ */
 
-    std::cout << "* TEST 8) Shrubbery Form, signable but not executable"
-              << std::endl;
+    /* ------------------ TEST 8 ------------------ */
+
+	std::cout << GREEN << "---------- TEST 8 ----------- \n" << RESET << std::endl;
+    std::cout << "Should throw an exception -> Shrubbery Form, signable but not executable" << std::endl;
+
     try {
         Bureaucrat bur("John", 140);
         ShrubberyCreationForm form("Home");
@@ -121,24 +143,15 @@ int main() {
     } catch (std::exception &e) {
         std::cout << RED << "Exception: " << e.what() << RESET << std::endl;
     }
-    std::cout << std::endl;
+    std::cout << "\n -------------------------- \n\n";
+	std::cout << "\nPress Enter to continue...";
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-    /* ------------------------------------ */
 
-    std::cout << "TEST 9) Robotomy Form, signable and executable" << std::endl;
-    try {
-        Bureaucrat bur("John", 40);
-        RobotomyRequestForm form("Chicken");
-        form.beSigned(bur);
-        form.execute(bur);
-    } catch (std::exception &e) {
-        std::cout << RED << "Exception: " << e.what() << RESET << std::endl;
-    }
-    std::cout << std::endl;
+    /* ------------------ TEST 9 ------------------ */
 
-    /* ------------------------------------ */
-
-    std::cout << "* TEST 10) Robotomy Form, signable but not executable"
+	std::cout << GREEN << "---------- TEST 9 ----------- \n" << RESET << std::endl;
+    std::cout << "Should throw an exception -> Robotomy Form, signable but not executable"
               << std::endl;
     try {
         Bureaucrat bur("John", 50);
@@ -148,27 +161,16 @@ int main() {
     } catch (std::exception &e) {
         std::cout << RED << "Exception: " << e.what() << RESET << std::endl;
     }
-    std::cout << std::endl;
+    std::cout << "\n -------------------------- \n\n";
+	std::cout << "\nPress Enter to continue...";
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-    /* ------------------------------------ */
 
-    std::cout << "TEST 11) Presidential Pardon Form, signable and executable"
-              << std::endl;
-    try {
-        Bureaucrat bur("John", 4);
-        PresidentialPardonForm form("Marvin");
-        form.beSigned(bur);
-        form.execute(bur);
-    } catch (std::exception &e) {
-        std::cout << RED << "Exception: " << e.what() << RESET << std::endl;
-    }
-    std::cout << std::endl;
+    /* ------------------ TEST 10 ------------------ */
 
-    /* ------------------------------------ */
+	std::cout << GREEN << "---------- TEST 10 ----------- \n" << RESET << std::endl;
+    std::cout << "Should throw an exception -> Presidential Pardon Form, signable but not executable" << std::endl;
 
-    std::cout
-        << "* TEST 12) Presidential Pardon Form, signable but not executable"
-        << std::endl;
     try {
         Bureaucrat bur("John", 20);
         PresidentialPardonForm form("Marvin");
