@@ -1,7 +1,7 @@
 #include <Form.hpp>
 
-Form::Form(): _name("Anonymous"), _isSigned(false), _signGrade(150), _execGrade(150) {
-	std::cout << "Default constructor called" << std::endl;
+Form::Form(): _name("Form"), _isSigned(false), _signGrade(150), _execGrade(150) {
+	std::cout << "Form " << _name << " created with signgrade: " << _signGrade << " and execGrade " << _execGrade << std::endl;
 }
 
 Form::Form(std::string const& name, size_t signGrade, size_t execGrade): _name(name), _isSigned(false), _signGrade(signGrade), _execGrade(execGrade) {

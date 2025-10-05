@@ -35,6 +35,8 @@ class Form
 		size_t				getExecGrade()	const;
 		const std::string&	getName()		const;
 		bool				getIsSigned()	const;
+
+		//methods
 		void				beSigned(const Bureaucrat &b);
 };
 

@@ -1,4 +1,4 @@
-#include "../incl/Bureaucrat.hpp"
+#include <Bureaucrat.hpp>
 #include <Form.hpp>
 
 // constructors

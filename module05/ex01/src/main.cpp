@@ -1,14 +1,17 @@
-#include <Bureaucrat.hpp>
 #include <Form.hpp>
+#include <colors.hpp>
 
 int main(void)
 {
-	/* Create a form with grade too high */
+	/* ------------------ TEST 1 ------------------ */
+
+	std::cout << GREEN << "---------- TEST 1 ----------- \n" << RESET << std::endl;
+	std::cout << "Should throw an exception -> grade is too high" << std::endl;
 	{
 		try
 		{
-			Form form0("A99", 0, 5);
-			std::cout << form0 << std::endl;
+			Form form("A1", 0, 5);
+			std::cout << form << std::endl;
 		}
 		catch(std::exception &e)
 		{
@@ -17,17 +20,23 @@ int main(void)
 		
 	}
 
-	std::cout << "\n --------------------- \n\n";
+	std::cout << "\n -------------------------- \n\n";
+	std::cout << "\nPress Enter to continue...";
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-	/* Create form and sign it without exceptions */
+
+	/* ------------------ TEST 2 ------------------ */
+
+	std::cout << GREEN << "\n\n---------- TEST 2 ----------- \n\n" << RESET << std::endl;
+	std::cout << "Creates a form and signs it without exceptions\n" << std::endl;
 	{
 		try
 		{
-			Bureaucrat mike("Mike", 15);
-			Form form("B58", 20, 45);
-			std::cout << mike << std::endl;
+			Bureaucrat bob("Bob", 15);
+			Form form("A2", 20, 45);
+			std::cout << bob << std::endl;
 			std::cout << form << std::endl;
-			mike.signForm(form);
+			bob.signForm(form);
 			std::cout << form << std::endl;
 		}
 		catch (std::exception &e)
@@ -36,17 +45,23 @@ int main(void)
 		}
 	}
 	
-	std::cout << "\n --------------------- \n\n";
+	std::cout << "\n -------------------------- \n\n";
+	std::cout << "\nPress Enter to continue...";
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-	/* Create form and try to sign it but the grade is not enough */
+
+	/* ------------------ TEST 3 ------------------ */
+
+	std::cout << GREEN << "\n\n---------- TEST 3 ----------- \n\n" << RESET << std::endl;
+	std::cout << "Tries to sign form, but grade is too low\n" << std::endl;
 	{
 		try
 		{
-			Bureaucrat jon("Jon", 35);
-			Form form2("C_303", 20, 45);
-			std::cout << jon << std::endl;
+			Bureaucrat bella("Bella", 35);
+			Form form2("A3", 20, 45);
+			std::cout << bella << std::endl;
 			std::cout << form2 << std::endl;
-			jon.signForm(form2);
+			form2.beSigned(bella);
 			std::cout << form2 << std::endl;
 		}
 		catch (std::exception &e)
