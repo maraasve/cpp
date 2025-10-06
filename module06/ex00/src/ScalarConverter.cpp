@@ -29,7 +29,7 @@ static void convertPseudoLiterals(const std::string& literal) {
 
 static void convertChar(const std::string& literal) {
     char c = literal[0];
-	if (c > 0 && c < 270 && isprint(c)) {
+	if (isprint(c)) {
 		std::cout << "char: '" << c << "'" << std::endl;
 	}
 	else {
