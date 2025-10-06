@@ -2,6 +2,8 @@
 # define SCALARCONVERTER_HPP
 
 # include <iostream>
+# include <limits>
+# include <climits>
 
 class ScalarConverter {
 	public:

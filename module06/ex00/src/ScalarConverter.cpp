@@ -29,7 +29,12 @@ static void convertPseudoLiterals(const std::string& literal) {
 
 static void convertChar(const std::string& literal) {
     char c = literal[0];
-    std::cout << "char: '" << c << "'" << std::endl;
+	if (c > 0 && c < 270 && isprint(c)) {
+		std::cout << "char: '" << c << "'" << std::endl;
+	}
+	else {
+		std::cout << "char: Non displayable" << std::endl;
+	}
     std::cout << "int: " << static_cast<int>(c) << std::endl;
     std::cout << "float: " << static_cast<float>(c) << ".0f" << std::endl;
     std::cout << "double: " << static_cast<double>(c) << ".0" << std::endl;
@@ -37,7 +42,7 @@ static void convertChar(const std::string& literal) {
 
 static void convertInt(const std::string& literal) {
     int i = std::stoi(literal);
-    if (isprint(i)) {
+    if (i > 0 && i < 270 && isprint(i)) {
         std::cout << "char: '" << static_cast<char>(i) << "'" << std::endl;
     } 
     else if (i >= 0 && i <= 127) {
@@ -63,7 +68,7 @@ static bool convertFloat(const std::string& literal) {
         handleInvalidLiteral();
         return true;
     }
-    if (isprint(static_cast<int>(f))) {
+    if (f > 0 && f < 270 && isprint(static_cast<int>(f))) {
         std::cout << "char: '" << static_cast<char>(f) << "'" << std::endl;
     }
     else if (f >= 0 && f <= 127) {
@@ -96,7 +101,7 @@ static void convertDouble(const std::string& literal) {
         handleInvalidLiteral();
         return;
     }
-    if (isprint(static_cast<int>(d))) {
+    if (d > 0 && d < 270 && isprint(static_cast<int>(d))) {
         std::cout << "char: '" << static_cast<char>(d) << "'" << std::endl;
     }
     else if (d >= 0 && d <= 127) {
