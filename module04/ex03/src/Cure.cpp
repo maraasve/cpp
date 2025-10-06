@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   Cure.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marieke <marieke@student.42.fr>            +#+  +:+       +#+        */
+/*   By: maraasve <maraasve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 12:30:38 by marieke           #+#    #+#             */
-/*   Updated: 2025/03/16 13:52:45 by marieke          ###   ########.fr       */
+/*   Updated: 2025/03/17 15:53:37 by maraasve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cure.hpp"
 
-Cure::Cure():
+Cure::Cure()
 {
 	_Type = "cure";
 }
@@ -35,8 +35,11 @@ Cure& Cure::operator=(const Cure &other)
 
 void	Cure::use(ICharacter &target)
 {
-	std::cout	<< "* shoots an ice bolt at" 
-				<< target.getName() 
-				<< "*" 
-				<< std::endl;
+	std::cout	<< GREEN << "* heals " << target.getName()
+				<< "'s wounds *" << RESET << std::endl;
+}
+
+AMateria* Cure::clone() const
+{
+	return (new Cure(*this));
 }

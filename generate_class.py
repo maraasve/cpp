@@ -45,7 +45,7 @@ def create_cpp_file(class_name):
 }}
 
 {class_name}& {class_name}::operator=(const {class_name}& src) {{
-    std::cout << "Copy assignemt operator called" << std::endl;
+    std::cout << "Copy assignment operator called" << std::endl;
 }}
 """
 

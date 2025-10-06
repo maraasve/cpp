@@ -17,7 +17,6 @@ class Data {
 
 		size_t getNum1() const;
 		size_t getNum2() const;
-
 };
 
 #endif

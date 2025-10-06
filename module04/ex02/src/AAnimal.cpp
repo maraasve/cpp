@@ -39,7 +39,7 @@ AAnimal&	AAnimal::operator=(const AAnimal &other)
 
 void	AAnimal::makeSound()
 {
-	std::cout << RED << "GENARIC AAnimal SOUND" << RESET << std::endl;
+	std::cout << RED << "GENARIC ANIMAL SOUND" << RESET << std::endl;
 }
 
 std::string	AAnimal::getType()

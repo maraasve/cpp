@@ -6,7 +6,7 @@
 /*   By: maraasve <maraasve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 14:26:53 by maraasve          #+#    #+#             */
-/*   Updated: 2025/03/12 17:23:08 by maraasve         ###   ########.fr       */
+/*   Updated: 2025/03/17 16:35:35 by maraasve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@
 
 #include <limits>
 
-#define animalNum 11
+#define animalNum 4
 
 int	main(void)
 {
 	Animal	*listOfAnimals[animalNum];
-
+	std::cout << "INITIALISING ARRAY:" << std::endl;
 	for (int i = 0; i < animalNum; i++)
 	{
 		if(i < animalNum / 2)
@@ -34,13 +34,13 @@ int	main(void)
 			listOfAnimals[i] = new Cat();
 		std::cout << std::endl;
 	}
+
+	std::cout << std::endl;
+	std::cout << "DELETING ARRAY:" << std::endl;
+
 	for (int i = 0; i < animalNum; i++)
 	{
 		delete listOfAnimals[i];
 		std::cout << std::endl;
 	}
-	Dog Boeffie;
-	std::cout << std::endl;
-	Dog Nemo(Boeffie);
-	std::cout << std::endl;
 }

@@ -6,7 +6,7 @@
 /*   By: maraasve <maraasve@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 14:26:53 by maraasve          #+#    #+#             */
-/*   Updated: 2025/03/12 17:23:14 by maraasve         ###   ########.fr       */
+/*   Updated: 2025/03/17 16:28:58 by maraasve         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int	main(void)
 		delete j;
 		delete i;
 	}
+	std::cout << std::endl;
 	{
 		WrongAnimal* meta = new WrongAnimal();
 		WrongAnimal* j = new WrongDog();
@@ -44,7 +45,7 @@ int	main(void)
 		std::cout << j->getType() << " " << std::endl;
 		std::cout << i->getType() << " " << std::endl;
 		std::cout << meta->getType() << " " << std::endl;
-		i->makeSound(); //will output the cat sound!
+		i->makeSound(); //will output the generic animal sound!
 		j->makeSound();
 		meta->makeSound();
 		

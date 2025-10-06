@@ -6,13 +6,13 @@
 #    By: maraasve <maraasve@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/10 14:25:08 by maraasve          #+#    #+#              #
-#    Updated: 2025/03/12 17:15:13 by maraasve         ###   ########.fr        #
+#    Updated: 2025/03/17 16:24:39 by maraasve         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = Animal
 CC = c++
-CFLAGS = -Wall -Werror -Wextra -g -fno-limit-debug-info
+CFLAGS = -Wall -Werror -Wextra
 SRC_DIR = src
 SRC_FILES = main.cpp AAnimal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongDog.cpp WrongCat.cpp Brain.cpp
 SRC = $(patsubst %, $(SRC_DIR)/%, $(SRC_FILES))

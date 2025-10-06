@@ -6,19 +6,19 @@
 #    By: maraasve <maraasve@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/10 14:25:08 by maraasve          #+#    #+#              #
-#    Updated: 2025/03/12 17:22:38 by maraasve         ###   ########.fr        #
+#    Updated: 2025/03/17 16:24:45 by maraasve         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Animal
+NAME = Materia
 CC = c++
-CFLAGS = -Wall -Werror -Wextra -g -fno-limit-debug-info
+CFLAGS = -Wall -Werror -Wextra
 SRC_DIR = src
-SRC_FILES = main.cpp AMateria.cpp ICharacter.cpp
+SRC_FILES = main.cpp AMateria.cpp Character.cpp Cure.cpp Ice.cpp MateriaSource.cpp
 SRC = $(patsubst %, $(SRC_DIR)/%, $(SRC_FILES))
 OBJ_DIR = obj
 INCL_DIR = incl
-INCL_FILES = AMateria.hpp ICharacter.hpp
+INCL_FILES = AMateria.hpp Character.hpp Cure.hpp Ice.hpp ICharacter.hpp IMateriaSource.hpp MateriaSource.hpp
 INCL = $(patsubst %, $(INCL_DIR)/%, $(INCL_FILES))
 OBJ = $(SRC_FILES:%.cpp=$(OBJ_DIR)/%.o)
 
