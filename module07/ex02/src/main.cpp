@@ -74,3 +74,80 @@ int main(void) {
 		}
 	}
 }
+
+// class Point {
+// private:
+//     int _x;
+//     int _y;
+
+// public:
+//     Point() : _x(0), _y(0) {}
+//     Point(int x, int y) : _x(x), _y(y) {}
+
+//     // Copy constructor
+//     Point(const Point& other) : _x(other._x), _y(other._y) {}
+
+//     // Assignment operator
+//     Point& operator=(const Point& other) {
+//         if (this != &other) {
+//             _x = other._x;
+//             _y = other._y;
+//         }
+//         return *this;
+//     }
+// 	int getX() const { return _x; }
+// 	int getY() const { return _y; }
+
+// };
+
+// std::ostream& operator<<(std::ostream& os, const Point& p) {
+// 	os << "(" << p.getX() << ", " << p.getY() << ")";
+// 	return os;
+// }
+
+// int main() {
+//     // TEST 1: Fill array
+//     std::cout << BOLDMAGENTA << "\nTEST 1: Fill array with Points\n" << RESET;
+//     Array<Point> points(5);
+//     for (unsigned int i = 0; i < points.size(); i++) {
+//         points[i] = Point(i, i * 2);
+//     }
+//     for (unsigned int i = 0; i < points.size(); i++) {
+//         std::cout << BLUE << "Index " << i << ": " << RESET << points[i] << std::endl;
+//     }
+//     std::cout << "\nPress Enter to continue..." << std::endl;
+//     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+//     // TEST 2: Copy constructor
+//     std::cout << BOLDMAGENTA << "\nTEST 2: Copy constructor\n" << RESET;
+//     Array<Point> pointsCopy(points);
+//     for (unsigned int i = 0; i < pointsCopy.size(); i++) {
+//         std::cout << BLUE << "Index " << i << ": " << RESET << pointsCopy[i] << std::endl;
+//     }
+//     std::cout << "\nPress Enter to continue..." << std::endl;
+//     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+//     // TEST 3: Assignment operator
+//     std::cout << BOLDMAGENTA << "\nTEST 3: Assignment operator\n" << RESET;
+//     Array<Point> pointsAssign;
+//     pointsAssign = points;
+//     for (unsigned int i = 0; i < pointsAssign.size(); i++) {
+//         std::cout << BLUE << "Index " << i << ": " << RESET << pointsAssign[i] << std::endl;
+//     }
+//     std::cout << "\nPress Enter to continue..." << std::endl;
+//     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+//     // TEST 4: Out-of-bounds access
+//     std::cout << BOLDMAGENTA << "\nTEST 4: Out-of-bounds access\n" << RESET;
+//     try {
+//         std::cout << points[10] << std::endl;
+//     } catch (const std::exception &e) {
+//         std::cerr << RED << "Error: " << e.what() << RESET << std::endl;
+//     }
+
+//     try {
+//         std::cout << points[-1] << std::endl;
+//     } catch (const std::exception &e) {
+//         std::cerr << RED << "Error: " << e.what() << RESET << std::endl;
+//     }
+// }
