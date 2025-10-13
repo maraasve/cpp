@@ -9,9 +9,15 @@ int main(int argc, char *argv[]) {
 	try {
 		btc.parseData("data.csv");
 	}
-	catch (std::exception) {}
+	catch (const std::exception &e) {
+		std::cerr << e.what() << std::endl;
+		return 1;
+	}
 	try {
 		btc.convertInput(argv[1]);
 	}
-	catch (std::exception) {}
+	catch (const std::exception &e) {
+		std::cerr << e.what() << std::endl;
+		return 1;
+	}
 }

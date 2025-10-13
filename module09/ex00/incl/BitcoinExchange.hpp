@@ -5,8 +5,9 @@
 # include <map>
 # include <fstream>
 # include <sstream>
-# include <limits>
-# include <ctime>
+# include <climits>
+// # include <ctime>
+# include <functional>
 
 class BitcoinExchange {
 	private:
@@ -20,6 +21,7 @@ class BitcoinExchange {
 
 		void	parseData(const std::string& filename);
 		void	convertInput(const std::string& filename);
+		void	convertValue(const std::string& date, const std::string& value);
 
 };
 
