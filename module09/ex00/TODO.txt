@@ -1,2 +1,0 @@
-[ ] DB empty
-[ ] Error in DB parsing???
