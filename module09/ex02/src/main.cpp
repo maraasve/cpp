@@ -7,9 +7,10 @@ int main(int argc, char *argv[]) {
 	}
 	try {
 		PmergeMe P(argc, argv);
-		std::cout << "Before: "; P.printDeq();
+		//std::cout << "Before: "; P.printDeq();
 	}
 	catch (const std::exception &e) {
+		std::cout << "Error: " << e.what() << std::endl;
 		return 1;
 	}
 }

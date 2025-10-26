@@ -4,6 +4,8 @@
 # include <iostream>
 # include <vector>
 # include <deque>
+# include <chrono>
+# include <iomanip>
 
 
 template <typename Container>
@@ -20,6 +22,9 @@ class PmergeMe
 	private:
 		std::vector<int>	_vec;
 		std::deque<int>		_deq;
+		std::vector<int>	_sortedVec;
+		std::deque<int>		_sortedDeq;
+
 
 	public:
 		PmergeMe() = delete;
@@ -29,9 +34,11 @@ class PmergeMe
 		~PmergeMe();
 
 		void	parseInput(int argc, char *argv[]);
-		std::vector<int>	mergeInsertVec(std::vector<int> vec);
-		void	printVec();
-		void	printDeq();
+		std::vector<int>	mergeInsertVec(std::vector<int> &vec);
+		std::deque<int>		mergeInsertDeq(std::deque<int> &deq);
+		void	printVec(const std::vector<int> &vec);
+		void	printDeq(const std::deque<int> &deq);
+		void	run();
 };
 
 #endif
