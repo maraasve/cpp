@@ -94,7 +94,7 @@ static bool validValue(const std::string& value, ErrorHandler onError = nullptr)
     if (f > static_cast<float>(INT_MAX) && !onError) {
 		return false;
     }
-	if (f > 1000 && onError) {
+	if (f >= 1000 && onError) {
 		handler("too large a number");
 		return false;
 	}
