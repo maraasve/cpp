@@ -22,25 +22,21 @@ PmergeMe&	PmergeMe::operator=(const PmergeMe &src) {
 }
 
 void PmergeMe::run() {
-    // Measure vector version
     auto startVec = std::chrono::high_resolution_clock::now();
     _sortedVec = mergeInsertVec(_vec);
     auto endVec = std::chrono::high_resolution_clock::now();
 
-    // Measure deque version
     auto startDeq = std::chrono::high_resolution_clock::now();
     _sortedDeq = mergeInsertDeq(_deq);
     auto endDeq = std::chrono::high_resolution_clock::now();
 
-    // Compute durations in microseconds
     std::chrono::duration<double, std::micro> durationVec = endVec - startVec;
     std::chrono::duration<double, std::micro> durationDeq = endDeq - startDeq;
 
-    // Print results
     std::cout << "Before: ";
-    printVec(_vec); // store unsorted version before sorting
+    printVec(_vec);
     std::cout << "After: ";
-    printVec(_sortedVec); // or the sorted version
+    printVec(_sortedVec);
 
     std::cout << std::fixed << std::setprecision(5);
     std::cout << "Time to process a range of " << _vec.size()
