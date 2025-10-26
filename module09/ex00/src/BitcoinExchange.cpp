@@ -139,10 +139,18 @@ void BitcoinExchange::convertInput(const std::string& filename) {
     if (!file.is_open()) {
         throw std::runtime_error("Error: could not open file.");
     }
-	int i = 2;
 
     std::string line;
-    std::getline(file, line); //skip header date | value
+    while (std::getline(file, line)) {
+		trimWhiteSpaces(line);
+		if (line.empty()) {
+			continue;
+		}
+		if (line == "date | value") {
+			break;
+		}
+		throw std::runtime_error("Error: invalid file format");
+	}
     while (std::getline(file, line)) {
         std::stringstream   ss(line);
         std::string         date;
@@ -168,7 +176,6 @@ void BitcoinExchange::convertInput(const std::string& filename) {
 			}
 			convertValue(date, value);
         }
-		i++;
     }
     file.close();
 }
