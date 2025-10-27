@@ -22,8 +22,10 @@ PmergeMe&	PmergeMe::operator=(const PmergeMe &src) {
 }
 
 void PmergeMe::run() {
+    std::cout << "Before: ";
+    printVec(_vec);
     auto startVec = std::chrono::high_resolution_clock::now();
-    _sortedVec = mergeInsertVec(_vec);
+    _sortedVec = mergeInsertVec(_vec, 1);
     auto endVec = std::chrono::high_resolution_clock::now();
 
     auto startDeq = std::chrono::high_resolution_clock::now();
@@ -33,8 +35,6 @@ void PmergeMe::run() {
     std::chrono::duration<double, std::micro> durationVec = endVec - startVec;
     std::chrono::duration<double, std::micro> durationDeq = endDeq - startDeq;
 
-    std::cout << "Before: ";
-    printVec(_vec);
     std::cout << "After: ";
     printVec(_sortedVec);
 
@@ -43,6 +43,7 @@ void PmergeMe::run() {
               << " elements with std::vector : " << durationVec.count() << " us\n";
     std::cout << "Time to process a range of " << _deq.size()
               << " elements with std::deque : " << durationDeq.count() << " us\n";
+	std::cout << "Comparison count = " << _comparisonCount << std::endl;
 }
 
 void PmergeMe::printDeq(const std::deque<int> &deq) {
@@ -53,7 +54,7 @@ void PmergeMe::printVec(const std::vector<int> &vec) {
 	print(vec);
 }
 
-void binaryInsertVec(std::vector<int> &vec, const int value) {
+void PmergeMe::binaryInsertVec(std::vector<int> &vec, const int value) {
 	size_t left = 0;
 	size_t right = vec.size();
 	while (left < right) {
@@ -64,6 +65,7 @@ void binaryInsertVec(std::vector<int> &vec, const int value) {
 		else {
 			left = mid + 1;
 		}
+		_comparisonCount++;
 	}
 	vec.insert(vec.begin() + left, value);
 }
@@ -92,41 +94,45 @@ std::vector<int> getInsertionOrderVec(int size) {
 	return order;
 }
 
-std::vector<int> PmergeMe::mergeInsertVec(std::vector<int> &vec) {
+void swapPair(std::vector<int> &vec, size_t i, size_t pairSize) {
+    for (size_t j = 0; j < pairSize; j++) {
+        std::swap(vec[i + j], vec[i + pairSize + j]);
+    }
+}
+
+
+std::vector<int> PmergeMe::mergeInsertVec(std::vector<int> &vec, size_t pairSize) {
 	std::vector<int> smaller, larger;
 
-	if (vec.size() <= 1) {
+	if (vec.size() < pairSize * 2) {
 		return vec;
 	}
 
-	if (vec.size() == 2) {
-		if (vec[0] > vec[1]) {
-			std::swap(vec[0], vec[1]);
+	for (size_t i = 0; i + 2 * pairSize - 1 < vec.size(); i += 2 * pairSize) {
+		_comparisonCount++;
+		if (vec[i + pairSize - 1] > vec[i + 2 * pairSize - 1]) {
+			swapPair(vec, i, pairSize);
 		}
-		return vec;
 	}
 
-	for (size_t i = 0; i + 1 < vec.size(); i += 2) {
-		if (vec[i] > vec[i + 1]) {
-			std::swap(vec[i], vec[i + 1]);
-		}
-		smaller.push_back(vec[i]);
-		larger.push_back(vec[i + 1]);
-	}
-	if (vec.size() % 2) {
-		smaller.push_back(vec.back());
-	}
+	std::vector<int> temp = mergeInsertVec(vec, pairSize * 2);
+	vec = temp;
 
-	std::vector<int> temp = mergeInsertVec(larger);
-	larger = temp;
+	std::vector<int> mainChain;
 
-	binaryInsertVec(larger, smaller[0]);
-
-	std::vector<int> order = getInsertionOrderVec(smaller.size());
-	for (size_t i = 1; i < order.size(); i++) {
-		binaryInsertVec(larger, smaller[order[i]]);
+	for (size_t i = 0; i < pairSize; i++) {
+		mainChain.push_back(vec[i]);
 	}
-	return larger;
+	for (size_t i = pairSize; i < 2 * pairSize; i++) {
+		mainChain.push_back(vec[i]);
+	}
+	std::cout << "MAINCHAIN = " << std::endl; printVec(mainChain);
+
+	// std::vector<int> order = getInsertionOrderVec(smaller.size());
+	// for (size_t i = 1; i < order.size(); i++) {
+	// 	binaryInsertVec(larger, smaller[order[i]]);
+	// }
+	return mainChain;
 }
 
 void binaryInsertDeq(std::deque<int> &deq, const int value) {

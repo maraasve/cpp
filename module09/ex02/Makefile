@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: marieke <marieke@student.42.fr>            +#+  +:+       +#+         #
+#    By: maraasve <maraasve@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/10 14:25:08 by maraasve          #+#    #+#              #
-#    Updated: 2025/10/26 15:01:38 by marieke          ###   ########.fr        #
+#    Updated: 2025/10/27 18:07:31 by maraasve         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ INCL_FILES = PmergeMe.hpp
 INCL = $(patsubst %, $(INCL_DIR)/%, $(INCL_FILES))
 SRC_DIR = src
 SRC_FILES = main.cpp PmergeMe.cpp
-CFLAGS = -Wall -Werror -Wextra -I$(INCL_DIR) -std=c++11
+CFLAGS = -Wall -Werror -Wextra -I$(INCL_DIR) -std=c++11 -g
 SRC = $(patsubst %, $(SRC_DIR)/%, $(SRC_FILES))
 OBJ = $(SRC_FILES:%.cpp=$(OBJ_DIR)/%.o)
 

@@ -24,6 +24,7 @@ class PmergeMe
 		std::deque<int>		_deq;
 		std::vector<int>	_sortedVec;
 		std::deque<int>		_sortedDeq;
+		size_t				_comparisonCount = 0;
 
 
 	public:
@@ -34,11 +35,12 @@ class PmergeMe
 		~PmergeMe();
 
 		void	parseInput(int argc, char *argv[]);
-		std::vector<int>	mergeInsertVec(std::vector<int> &vec);
+		std::vector<int>	mergeInsertVec(std::vector<int> &vec, size_t pairSize);
 		std::deque<int>		mergeInsertDeq(std::deque<int> &deq);
 		void	printVec(const std::vector<int> &vec);
 		void	printDeq(const std::deque<int> &deq);
 		void	run();
+		void	binaryInsertVec(std::vector<int> &vec, const int value);
 };
 
 #endif
