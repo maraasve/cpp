@@ -21,53 +21,63 @@ PmergeMe&	PmergeMe::operator=(const PmergeMe &src) {
 	return *this;
 }
 
+
 void PmergeMe::run() {
     std::cout << "Before: ";
-    printVec(_vec);
+    print<std::vector<int>>(_vec);
     auto startVec = std::chrono::high_resolution_clock::now();
     _sortedVec = mergeInsertVec(_vec, 1);
     auto endVec = std::chrono::high_resolution_clock::now();
 
-    auto startDeq = std::chrono::high_resolution_clock::now();
-    _sortedDeq = mergeInsertDeq(_deq);
-    auto endDeq = std::chrono::high_resolution_clock::now();
+    // auto startDeq = std::chrono::high_resolution_clock::now();
+    // _sortedDeq = mergeInsertVec(_vec, 1);
+    // auto endDeq = std::chrono::high_resolution_clock::now();
 
     std::chrono::duration<double, std::micro> durationVec = endVec - startVec;
-    std::chrono::duration<double, std::micro> durationDeq = endDeq - startDeq;
+    // std::chrono::duration<double, std::micro> durationDeq = endDeq - startDeq;
 
     std::cout << "After: ";
-    printVec(_sortedVec);
+    print<std::vector<int>>(_sortedVec);
 
     std::cout << std::fixed << std::setprecision(5);
     std::cout << "Time to process a range of " << _vec.size()
               << " elements with std::vector : " << durationVec.count() << " us\n";
-    std::cout << "Time to process a range of " << _deq.size()
-              << " elements with std::deque : " << durationDeq.count() << " us\n";
-	std::cout << "Comparison count = " << _comparisonCount << std::endl;
+    std::cout << "Time to process a range of " << _vec.size()
+              << " elements with std::deque : " << durationVec.count() << " us\n";
+	std::cout << "Comparison count: " << _comparisonCount << std::endl;
 }
 
-void PmergeMe::printDeq(const std::deque<int> &deq) {
-	print(deq);
-}
+void PmergeMe::binaryInsertVec(std::vector<int> &vec, const std::vector<int> &pending, size_t pairSize, size_t bound) {
+    if (vec.empty()) {
+        vec.insert(vec.end(), pending.begin(), pending.begin() + pairSize);
+        return;
+    }
 
-void PmergeMe::printVec(const std::vector<int> &vec) {
-	print(vec);
-}
+    // Compare using the last element of the chunk
+    int value = pending[pairSize - 1];
 
-void PmergeMe::binaryInsertVec(std::vector<int> &vec, const int value) {
-	size_t left = 0;
-	size_t right = vec.size();
-	while (left < right) {
-		size_t mid = left + (right - left) / 2;
-		if (value < vec[mid]) {
-			right = mid;
-		}
-		else {
-			left = mid + 1;
-		}
-		_comparisonCount++;
-	}
-	vec.insert(vec.begin() + left, value);
+    // Clamp bound to the actual number of existing chunks
+    size_t totalChunks = vec.size() / pairSize;
+    if (bound > totalChunks)
+        bound = totalChunks;
+
+    size_t left = 0;
+    size_t right = bound;
+
+    while (left < right) {
+        size_t mid = left + (right - left) / 2;
+        int midValue = vec[mid * pairSize + (pairSize - 1)];
+
+        if (value < midValue)
+            right = mid;
+        else
+            left = mid + 1;
+
+        _comparisonCount++;
+    }
+
+    // Insert the full chunk at the calculated position
+    vec.insert(vec.begin() + left * pairSize, pending.begin(), pending.begin() + pairSize);
 }
 
 std::vector<int> generateJacobsthalVec(int size) {
@@ -84,9 +94,9 @@ std::vector<int> getInsertionOrderVec(int size) {
 	std::vector<int> seq = generateJacobsthalVec(size);
 	std::vector<int> order;
 	
-	for (int i = 1; i < static_cast<int>(seq.size()); ++i) {
+	for (int i = 3; i < static_cast<int>(seq.size()); ++i) {
 		for (int j = seq[i] - 1; j >= seq[i - 1]; --j) {
-			if (j < size) {
+			if (j <= size) {
 				order.push_back(j);
 			}
 		}
@@ -100,10 +110,11 @@ void swapPair(std::vector<int> &vec, size_t i, size_t pairSize) {
     }
 }
 
+long PmergeMe::generateJacobstHalAtIdx(long n) { 
+	return round((pow(2, n + 1) + pow(-1, n)) / 3);
+}
 
-std::vector<int> PmergeMe::mergeInsertVec(std::vector<int> &vec, size_t pairSize) {
-	std::vector<int> smaller, larger;
-
+std::vector<int> PmergeMe::mergeInsertVec(std::vector<int> vec, size_t pairSize) {
 	if (vec.size() < pairSize * 2) {
 		return vec;
 	}
@@ -117,98 +128,94 @@ std::vector<int> PmergeMe::mergeInsertVec(std::vector<int> &vec, size_t pairSize
 
 	std::vector<int> temp = mergeInsertVec(vec, pairSize * 2);
 	vec = temp;
-
-	std::vector<int> mainChain;
+	std::cout << std::endl; std::cout << "PAIRSIZE = " << pairSize << std::endl;
+	std::cout << "VEC = "; print<std::vector<int>>(vec);
+	
+	std::vector<int> mainchain, pending;
+	// FORM MAINCHAIN WITH B1 AND ALL A'S
 
 	for (size_t i = 0; i < pairSize; i++) {
-		mainChain.push_back(vec[i]);
+		mainchain.push_back(vec[i]);
 	}
-	for (size_t i = pairSize; i < 2 * pairSize; i++) {
-		mainChain.push_back(vec[i]);
-	}
-	std::cout << "MAINCHAIN = " << std::endl; printVec(mainChain);
-
-	// std::vector<int> order = getInsertionOrderVec(smaller.size());
-	// for (size_t i = 1; i < order.size(); i++) {
-	// 	binaryInsertVec(larger, smaller[order[i]]);
-	// }
-	return mainChain;
-}
-
-void binaryInsertDeq(std::deque<int> &deq, const int value) {
-	size_t left = 0;
-	size_t right = deq.size();
-	while (left < right) {
-		size_t mid = left + (right - left) / 2;
-		if (value < deq[mid]) {
-			right = mid;
-		}
-		else {
-			left = mid + 1;
+	for (size_t i = pairSize; i < vec.size() - pairSize + 1; i += pairSize * 2) {
+		for (size_t j = 0; j < pairSize; j++) {
+			mainchain.push_back(vec[i + j]);
 		}
 	}
-	deq.insert(deq.begin() + left, value);
-}
-
-std::deque<int> generateJacobsthalDeq(int size) {
-	std::deque<int> seq;
-	seq.push_back(0);
-	seq.push_back(1);
-	while (seq.back() < size) {
-		seq.push_back(seq[seq.size() - 1] + 2 * seq[seq.size() - 2]);
-	}
-	return seq;
-}
-
-std::deque<int> getInsertionOrderDeq(int size) {
-	std::deque<int> seq = generateJacobsthalDeq(size);
-	std::deque<int> order;
 	
-	for (int i = 1; i < static_cast<int>(seq.size()); ++i) {
-		for (int j = seq[i] - 1; j >= seq[i - 1]; --j) {
-			if (j < size) {
-				order.push_back(j);
-			}
+	//FORM PENDING WITH REMAINING B'S AND NON PARTICIPATING
+	for (size_t i = pairSize * 2; i + pairSize - 1 < vec.size(); i += pairSize * 2) {
+		for (size_t j = 0; j < pairSize && j + i < vec.size(); j++) {
+			pending.push_back(vec[i + j]);
 		}
 	}
-	return order;
+	
+	
+	size_t leftoverStart = (vec.size() / pairSize) * pairSize;
+	if (leftoverStart < vec.size()) {
+		for (size_t i = leftoverStart; i < vec.size(); ++i) {
+			pending.push_back(vec[i]);
+		}
+	}
+	if (pending.size() < pairSize) {
+		for (size_t i = 0; i < pending.size(); i++) {
+			mainchain.push_back(pending[i]);
+		}
+		std::cout << "MAINCHAIN = "; print<std::vector<int>>(mainchain);
+		return mainchain;
+	}
+
+	std::cout << "MAINCHAIN = "; print<std::vector<int>>(mainchain);
+	std::cout << "PENDING = "; print<std::vector<int>>(pending);
+
+	// std::vector<int> order = getInsertionOrderVec(pending.size() / pairSize);
+	// size_t inserted = 0;
+	// std::cout << " ORDER :"; print<std::vector<int>>(order);
+	// for (size_t i = 0; i < order.size(); i++) {
+	// 	size_t start = (order[i] - 1) * pairSize;
+	// 	std::vector<int> chunk(pending.begin() + start, pending.begin() + start + pairSize);
+	// 	std::cout << order[i] << " CHUNK :"; print<std::vector<int>>(chunk);
+	// 	binaryInsertVec(mainchain, chunk, pairSize);
+	// 	inserted++;
+	// }
+
+	int inserted = 0;
+	int prevJacob = generateJacobstHalAtIdx(1);
+	int curJacob = 0;
+	for (int i = 2;; i++) {
+		curJacob = generateJacobstHalAtIdx(i);
+		if (curJacob > static_cast<int>(pending.size() / pairSize)) {
+			break ;
+		}
+		std::cout << " CurJacob = " << curJacob << std::endl;
+		std::cout << " prevJacob = " << prevJacob << std::endl;
+		for (int j = curJacob - 1; j >= prevJacob; j--) {
+			int start = (j - 1) * pairSize;
+				std::vector<int> chunk(pending.begin() + start, pending.begin() + start + pairSize);
+				std::cout << j << " CHUNK :"; print<std::vector<int>>(chunk);
+				binaryInsertVec(mainchain, chunk, pairSize, curJacob + inserted);
+				inserted++;
+		}
+		prevJacob = curJacob;
+	}
+
+	if (static_cast<int>((pending.size() / pairSize)) > inserted) {
+		for (size_t i = inserted * pairSize; i <= pending.size() - pairSize; i += pairSize) {
+			std::vector<int> chunk(pending.begin() + i, pending.begin() + i + pairSize);
+			std::cout << "remaining" << " CHUNK :"; print<std::vector<int>>(chunk);
+			binaryInsertVec(mainchain, chunk, pairSize, curJacob + inserted);
+		}
+	}
+
+	// INSERT REMAINING 
+	if (pending.size() / pairSize) {
+		for (size_t i = (pending.size() / pairSize) * pairSize; i < pending.size(); i++) {
+			mainchain.push_back(pending[i]);
+		}
+	}
+	return mainchain;
 }
 
-std::deque<int>	PmergeMe::mergeInsertDeq(std::deque<int> &deq) {
-	std::deque<int> smaller, larger;
-
-	if (deq.size() <= 1) {
-		return deq;
-	}
-
-	if (deq.size() == 2) {
-		if (deq[0] > deq[1]) {
-			std::swap(deq[0], deq[1]);
-		}
-		return deq;
-	}
-
-
-	for (size_t i = 0; i < deq.size(); i += 2) {
-		if (deq[i] > deq[i + 1]) {
-			std::swap(deq[i], deq[i + 1]);
-		}
-		larger.push_back(deq[i + 1]);
-		smaller.push_back(deq[i]);
-	}
-
-	std::deque<int> temp = mergeInsertDeq(larger);
-	larger = temp;
-
-	binaryInsertDeq(larger, smaller[0]);
-
-	std::deque<int> order = getInsertionOrderDeq(smaller.size());
-
-	for (size_t i = 1; i < order.size(); i++) {
-		binaryInsertDeq(larger, smaller[order[i]]);
-	}
-	return larger;
-}
 
 void PmergeMe::parseInput(int argc, char *argv[]) {
 	for (int i = 1; i < argc; i++) {
@@ -230,3 +237,23 @@ void PmergeMe::parseInput(int argc, char *argv[]) {
 		}
 	}
 }
+
+
+// void PmergeMe::mergeInsertVec(std::vector<int> &larger, std::vector<int> *smaller = nullptr) {
+// 	if (larger.size() <= 1) {
+// 		return;
+// 	}
+
+// 	std::vector<int> newLarger, newSmaller;
+
+// 	for (size_t i = 0; i + 1 < larger.size(); i += 2) {
+// 		if (larger[i] > larger[i + 1]) {
+// 			_comparisonCount++;
+// 			std::swap(larger[i], larger[i + 1]);
+// 			if (smaller) {
+// 				std::swap(smaller[i], smaller[i + 1]);
+// 			}
+
+// 		}
+// 	}
+// }

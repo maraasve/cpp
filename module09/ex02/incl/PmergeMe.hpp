@@ -8,15 +8,6 @@
 # include <iomanip>
 
 
-template <typename Container>
-void print(Container &c) {
-	for (const auto &value : c) {
-		std::cout << value << " ";
-	}
-	std::cout << std::endl;
-}
-
-
 class PmergeMe 
 {
 	private:
@@ -34,13 +25,35 @@ class PmergeMe
 		PmergeMe& operator=(const PmergeMe &src);
 		~PmergeMe();
 
+		long generateJacobstHalAtIdx(long n);
+
 		void	parseInput(int argc, char *argv[]);
-		std::vector<int>	mergeInsertVec(std::vector<int> &vec, size_t pairSize);
-		std::deque<int>		mergeInsertDeq(std::deque<int> &deq);
-		void	printVec(const std::vector<int> &vec);
-		void	printDeq(const std::deque<int> &deq);
+		std::vector<int>	mergeInsertVec(std::vector<int> vec, size_t pairSize);
 		void	run();
-		void	binaryInsertVec(std::vector<int> &vec, const int value);
+		void	binaryInsertVec(std::vector<int> &vec, const std::vector<int> &pending, size_t pairSize, size_t bound);
+
+		template <typename T> void print(T &c) {
+			for (const auto &value : c) {
+				std::cout << value << " ";
+			}
+			std::cout << std::endl;
+		}
+
+		template <typename T> bool compare(T one, T two) {
+			_comparisonCount++;
+			return *one > *two;
+		}
+
+		template <typename T> T next(T it, int steps) {
+			std::advance(it, steps);
+			return it;
+		}
+
+		// template <typename T> void PmergeMe::swapPair(T &c, size_t i, int pairSize) {
+		// 	for (size_t j = 0; j < pairSize; j++) {
+		// 		std::swap(c[i + j], c[i + pairSize + j]);
+		// 	}
+		// }
 };
 
 #endif
