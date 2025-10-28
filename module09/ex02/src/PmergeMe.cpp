@@ -44,7 +44,7 @@ void PmergeMe::run() {
               << " elements with std::vector : " << durationVec.count() << " us\n";
     std::cout << "Time to process a range of " << _vec.size()
               << " elements with std::deque : " << durationVec.count() << " us\n";
-	std::cout << "Comparison count: " << _comparisonCount << std::endl;
+	std::cout << "Number of comparisons: " << _comparisonCount << std::endl;
 }
 
 void PmergeMe::binaryInsertVec(std::vector<int> &vec, const std::vector<int> &pending, size_t pairSize, size_t bound) {
@@ -128,8 +128,6 @@ std::vector<int> PmergeMe::mergeInsertVec(std::vector<int> vec, size_t pairSize)
 
 	std::vector<int> temp = mergeInsertVec(vec, pairSize * 2);
 	vec = temp;
-	std::cout << std::endl; std::cout << "PAIRSIZE = " << pairSize << std::endl;
-	std::cout << "VEC = "; print<std::vector<int>>(vec);
 	
 	std::vector<int> mainchain, pending;
 	// FORM MAINCHAIN WITH B1 AND ALL A'S
@@ -161,12 +159,9 @@ std::vector<int> PmergeMe::mergeInsertVec(std::vector<int> vec, size_t pairSize)
 		for (size_t i = 0; i < pending.size(); i++) {
 			mainchain.push_back(pending[i]);
 		}
-		std::cout << "MAINCHAIN = "; print<std::vector<int>>(mainchain);
 		return mainchain;
 	}
 
-	std::cout << "MAINCHAIN = "; print<std::vector<int>>(mainchain);
-	std::cout << "PENDING = "; print<std::vector<int>>(pending);
 
 	// std::vector<int> order = getInsertionOrderVec(pending.size() / pairSize);
 	// size_t inserted = 0;
@@ -187,23 +182,21 @@ std::vector<int> PmergeMe::mergeInsertVec(std::vector<int> vec, size_t pairSize)
 		if (curJacob > static_cast<int>(pending.size() / pairSize)) {
 			break ;
 		}
-		std::cout << " CurJacob = " << curJacob << std::endl;
-		std::cout << " prevJacob = " << prevJacob << std::endl;
 		for (int j = curJacob - 1; j >= prevJacob; j--) {
 			int start = (j - 1) * pairSize;
 				std::vector<int> chunk(pending.begin() + start, pending.begin() + start + pairSize);
-				std::cout << j << " CHUNK :"; print<std::vector<int>>(chunk);
 				binaryInsertVec(mainchain, chunk, pairSize, curJacob + inserted);
 				inserted++;
 		}
 		prevJacob = curJacob;
 	}
 
+	//need to change this from back to frony
 	if (static_cast<int>((pending.size() / pairSize)) > inserted) {
 		for (size_t i = inserted * pairSize; i <= pending.size() - pairSize; i += pairSize) {
 			std::vector<int> chunk(pending.begin() + i, pending.begin() + i + pairSize);
-			std::cout << "remaining" << " CHUNK :"; print<std::vector<int>>(chunk);
 			binaryInsertVec(mainchain, chunk, pairSize, curJacob + inserted);
+			inserted++;
 		}
 	}
 
