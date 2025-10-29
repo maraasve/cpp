@@ -6,6 +6,7 @@
 # include <deque>
 # include <chrono>
 # include <iomanip>
+# include <cmath>
 
 
 class PmergeMe 
@@ -25,35 +26,51 @@ class PmergeMe
 		PmergeMe& operator=(const PmergeMe &src);
 		~PmergeMe();
 
-		long generateJacobstHalAtIdx(long n);
-
-		void	parseInput(int argc, char *argv[]);
+		void run();
+		void parseInput(int argc, char *argv[]);
 		std::vector<int>	mergeInsertVec(std::vector<int> vec, size_t pairSize);
-		void	run();
-		void	binaryInsertVec(std::vector<int> &vec, const std::vector<int> &pending, size_t pairSize, size_t bound);
+		std::deque<int>		mergeInsertDeq(std::deque<int> deq, size_t pairSize);
 
-		template <typename T> void print(T &c) {
-			for (const auto &value : c) {
-				std::cout << value << " ";
+		template <typename T>
+		void print(const T& container, const std::string& sep = " ") {
+			for (auto it = container.begin(); it != container.end(); ++it) {
+				std::cout << *it;
+				if (std::next(it) != container.end())
+					std::cout << sep;
 			}
 			std::cout << std::endl;
 		}
 
-		template <typename T> bool compare(T one, T two) {
-			_comparisonCount++;
-			return *one > *two;
+		template <typename T>
+		void binaryInsert(T& mainchain, const T& chunk, size_t pairSize, size_t bound, size_t& comparisonCount) {
+			if (mainchain.empty()) {
+				mainchain.insert(mainchain.end(), chunk.begin(), chunk.end());
+				return;
+			}
+
+			int value = chunk[pairSize - 1];
+			size_t totalChunks = mainchain.size() / pairSize;
+			if (bound > totalChunks) bound = totalChunks;
+
+			size_t left = 0, right = bound;
+			while (left < right) {
+				size_t mid = left + (right - left) / 2;
+				int midValue = mainchain[mid * pairSize + (pairSize - 1)];
+				comparisonCount++;
+				if (value < midValue) right = mid;
+				else left = mid + 1;
+			}
+
+			mainchain.insert(mainchain.begin() + left * pairSize, chunk.begin(), chunk.end());
 		}
 
-		template <typename T> T next(T it, int steps) {
-			std::advance(it, steps);
-			return it;
+		template <typename Container>
+		void swapPair(Container &c, size_t startIndex, size_t pairSize) {
+			for (size_t i = 0; i < pairSize; i++) {
+				std::swap(c[startIndex + i], c[startIndex + pairSize + i]);
+			}
 		}
 
-		// template <typename T> void PmergeMe::swapPair(T &c, size_t i, int pairSize) {
-		// 	for (size_t j = 0; j < pairSize; j++) {
-		// 		std::swap(c[i + j], c[i + pairSize + j]);
-		// 	}
-		// }
 };
 
 #endif
