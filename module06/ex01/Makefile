@@ -6,7 +6,7 @@
 #    By: marieke <marieke@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/10 14:25:08 by maraasve          #+#    #+#              #
-#    Updated: 2025/10/06 13:04:37 by marieke          ###   ########.fr        #
+#    Updated: 2025/10/11 16:12:18 by marieke          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,6 @@ clean:
 
 fclean: clean
 	@rm -f $(NAME)
-	@rm -f *_shrubbery
 
 re: fclean all
 
